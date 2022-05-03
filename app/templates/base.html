@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %} {% endblock %} - Mailer</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static',filename='style.css') }}"
+    />
+  </head>
+  <body>
+    <nav>Mail<b>er</b></nav>
+  </body>
+  <section class="content">
+    <div class="top-bar">
+      <form action="" method="GET">
+        <input name="search" type="text" placeholder="Queres buscar algo?" />
+      </form>
+      {% block action %} {% endblock %}
+    </div>
+    <header>{% block header %} {% endblock %}</header>
+    {% for msg in get_flashed_messages() %}
+    <div class="flash">{{ msg }}</div>
+    {% endfor %} {% block contenido %} {% endblock %}
+  </section>
+</html>
